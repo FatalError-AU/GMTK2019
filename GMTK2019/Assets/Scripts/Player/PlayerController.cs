@@ -1,7 +1,11 @@
-﻿using Enemy;
+﻿using System;
+using System.Linq;
+using Enemy;
+using InspectorGadgets.Attributes;
 using Rewired;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static Controls.Action;
 
 namespace Player
@@ -10,12 +14,16 @@ namespace Player
     {
         public static Rewired.Player Input { get; private set; }
 
+        public Transform test;
+        
         public Transform cameraAxis;
 
         public float playerSpeed = 25F;
         public float sprintSpeed = 45F;
         public float pickupRadius = 4F;
 
+        public float maxHealth = 100F;
+        
         [Header("Camera")]
         public float cameraSpeed = 25F;
         public float cameraPitchBoundHigh;
@@ -39,6 +47,12 @@ namespace Player
 
         [Header("UI")]
         public TextMeshProUGUI uiAmmoCount;
+        public Image uiDamageIndicator;
+        [LabelledCollection(typeof(CompassDirection))]
+        public Image[] uiHitmarks;
+        [LabelledCollection(typeof(CompassDirection))]
+        public float[] uiHitmarksAngles;
+        public float uiHitmarkFalloff = .4F;
 
         private float pitch;
         private float yaw;
@@ -66,6 +80,11 @@ namespace Player
         private Vector3 cameraVelocity;
         private float cameraAngularVelocity;
 
+        private float health = 1F;
+        private float damageIndicatorVelocity;
+
+        private float[] hitmarkOpacity;
+        
         private void Awake()
         {
             Input = ReInput.players.GetPlayer(Controls.Player.MAIN_PLAYER);
@@ -81,6 +100,8 @@ namespace Player
             pitch = cameraAxis.transform.localEulerAngles.x;
             yaw = transform.localEulerAngles.y;
             bullets = magazineSize;
+            
+            hitmarkOpacity = new float[uiHitmarksAngles.Length];
         }
 
         private void Update()
@@ -155,6 +176,8 @@ namespace Player
                 gunCooldown -= Time.deltaTime;
             else if (bullets > 0 && Input.GetButtonDown(SHOOT))
             {
+                sprinting = false;
+                
                 bullets--;
                 gunCooldown = cooldown;
                 targetRecoil += lanternHeld ? recoilWithLantern : recoil;
@@ -172,8 +195,32 @@ namespace Player
             }
         }
 
+        public void Damage(float damage, Transform damageSource)
+        {
+            if (damageSource)
+            {
+                float a = -Vector3.SignedAngle(test.transform.position - transform.position, transform.forward, Vector3.up);
+                float[] differences = uiHitmarksAngles.Select(x => Mathf.Abs(x - a)).ToArray();
+                CompassDirection direction = (CompassDirection) Array.IndexOf(differences, differences.Min());
+                if (direction == CompassDirection.South2)
+                    direction = CompassDirection.South;
+
+                hitmarkOpacity[(int)direction] = 1F;
+            }
+            
+            health -= damage / maxHealth;
+
+            if (health <= 0F)
+            {
+                //Dead
+            }
+        }
+        
         private void LateUpdate()
         {
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Z))
+                Damage(10F, test);
+            
             Vector2 camera = Input.GetAxis2D(LOOK_VERTICAL, LOOK_HORIZONTAL);
 
             yaw += camera.y * cameraSpeed * Time.deltaTime;
@@ -192,6 +239,36 @@ namespace Player
             cameraAxis.transform.localEulerAngles = cameraAxis.transform.localEulerAngles.Set(pitch - recoilValue, Utility.Axis.X);
 
             uiAmmoCount.text = bullets.ToString();
+
+            Color c = uiDamageIndicator.color;
+            c.a = Mathf.SmoothDamp(c.a, 1F - health, ref damageIndicatorVelocity, .25F);
+            uiDamageIndicator.color = c;
+
+            for (int i = 0; i < hitmarkOpacity.Length; i++)
+            {
+                if (hitmarkOpacity[i] > 0F)
+                    hitmarkOpacity[i] -= Time.deltaTime * uiHitmarkFalloff;
+
+                if (uiHitmarks[i])
+                {
+                    Color col = uiHitmarks[i].color;
+                    col.a = hitmarkOpacity[i];
+                    uiHitmarks[i].color = col;
+                }
+            }
+        }
+
+        private enum CompassDirection
+        {
+            North,
+            NorthEast,
+            East,
+            SouthEast,
+            South,
+            South2,
+            SouthWest,
+            West,
+            NorthWest
         }
     }
 }
