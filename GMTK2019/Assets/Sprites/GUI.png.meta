@@ -8,6 +8,9 @@ TextureImporter:
   - first:
       213: -7590540459826050841
     second: hitmark
+  - first:
+      213: -4905790078254811594
+    second: Crosshair
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -121,7 +124,7 @@ TextureImporter:
         width: 168
         height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,6 +132,27 @@ TextureImporter:
       bones: []
       spriteID: 73bacc4aa0c1ed64b91034044b58043c
       internalID: -7590540459826050841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crosshair
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 907
+        width: 7
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6939f031562d2e8459ec954f150e0483
+      internalID: -4905790078254811594
       vertices: []
       indices: 
       edges: []
