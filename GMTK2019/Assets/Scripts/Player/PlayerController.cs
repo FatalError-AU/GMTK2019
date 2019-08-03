@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using Animancer;
+using Animation;
 using Enemy;
 using InspectorGadgets.Attributes;
 using Rewired;
@@ -54,6 +56,18 @@ namespace Player
         public float[] uiHitmarksAngles;
         public float uiHitmarkFalloff = .4F;
 
+        [Header("Animation")]
+        [AnimationCollection.Validate(typeof(ArmsAnimation))]
+        public AnimationCollection armsAnimations;
+        
+        private EventfulAnimancerComponent animancer;
+        private LinearMixerState movementMixer;
+        private AnimancerState idle;
+        private AnimancerState walk;
+        private AnimancerState sprint;
+        private AnimancerState fire;
+        private AnimancerState reload;
+        
         private float pitch;
         private float yaw;
 
@@ -68,7 +82,6 @@ namespace Player
         private Rigidbody lanternRb;
         private bool lanternHeld;
 
-        private float reloadTimer;
         private bool reloading;
 
         private float recoilValue;
@@ -84,6 +97,7 @@ namespace Player
         private float damageIndicatorVelocity;
 
         private float[] hitmarkOpacity;
+        private float mixerVelocity;
         
         private void Awake()
         {
@@ -93,6 +107,21 @@ namespace Player
 
             lantern = GameObject.FindWithTag("Lantern").transform;
             lanternRb = lantern.GetComponent<Rigidbody>();
+
+            animancer = GetComponentInChildren<EventfulAnimancerComponent>();
+            
+            movementMixer = new LinearMixerState(animancer);
+            movementMixer.Initialise(
+                            armsAnimations.GetClip(ArmsAnimation.Idle),
+                            armsAnimations.GetClip(ArmsAnimation.Walk),
+                            armsAnimations.GetClip(ArmsAnimation.Sprint),
+                            0F, playerSpeed, sprintSpeed
+                    );
+            movementMixer.Play();
+            animancer.GetLayer(0).SetWeight(1F);
+            
+            fire = animancer.CreateState(armsAnimations.GetClip(ArmsAnimation.Fire), 1);
+            reload = animancer.CreateState(armsAnimations.GetClip(ArmsAnimation.Reload), 1);
         }
 
         private void Start()
@@ -125,6 +154,7 @@ namespace Player
                 sprinting = false;
             
             controller.Move(((sprinting ? sprintSpeed : playerSpeed) * movement + yVelocity * Vector3.up) * Time.deltaTime);
+            movementMixer.Parameter = Mathf.SmoothDamp(movementMixer.Parameter, controller.velocity.Remove(Utility.Axis.Y).magnitude, ref mixerVelocity, .25F);
 
             if (controller.isGrounded)
                 yVelocity = 0F;
@@ -162,15 +192,7 @@ namespace Player
             cameraPosition.localEulerAngles = new Vector3(cameraPosition.localEulerAngles.x, Mathf.SmoothDampAngle(cameraPosition.localEulerAngles.y, isAiming ? sightsAnchor.parent.localEulerAngles.y + sightsAnchor.localEulerAngles.y : cameraPosition.parent.localEulerAngles.y, ref cameraAngularVelocity, .25F), 0F);
             
             if (reloading)
-            {
-                reloadTimer -= Time.deltaTime;
-                if (reloadTimer <= 0F)
-                {
-                    reloading = false;
-                    bullets = magazineSize;
-                }
                 return;
-            }
 
             if (gunCooldown > 0F)
                 gunCooldown -= Time.deltaTime;
@@ -182,6 +204,8 @@ namespace Player
                 gunCooldown = cooldown;
                 targetRecoil += lanternHeld ? recoilWithLantern : recoil;
 
+                animancer.CrossFadeFromStart(fire, .03F);
+
                 if (Physics.Raycast(gunAnchor.position, gunAnchor.forward, out RaycastHit hit, 100F))
                 {
                     EnemyHealth health = hit.collider.GetComponent<EnemyHealth>();
@@ -190,7 +214,13 @@ namespace Player
                 }
             } else if (!lanternHeld && (Input.GetButtonDown(RELOAD) && bullets < magazineSize || bullets <= 0))
             {
-                reloadTimer = reloadLength;
+                animancer.CrossFadeFromStart(reload, .05F).OnEnd = () =>
+                {
+                    reload.OnEnd = null;
+                    reloading = false;
+                    bullets = magazineSize;
+                    animancer.GetLayer(1).StartFade(.05F);
+                };
                 reloading = true;
             }
         }
@@ -269,6 +299,16 @@ namespace Player
             SouthWest,
             West,
             NorthWest
+        }
+
+        [AnimationCollection.EnumAttribute("Arms Animations")]
+        public enum ArmsAnimation
+        {
+            Idle,
+            Walk,
+            Sprint,
+            Fire,
+            Reload
         }
     }
 }
