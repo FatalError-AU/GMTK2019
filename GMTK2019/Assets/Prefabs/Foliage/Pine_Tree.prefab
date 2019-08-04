@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3633496476392695109
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_Name
+      value: Pine_Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 175.61096
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.994141
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 38.823303
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_FadeMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_AnimateCrossFading
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.7117788
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.46931112
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207788492930233584, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 19851bd66e633af418897f01468c6da7, type: 2}
+    - target: {fileID: 2067129507551860237, guid: 6e992ee3140a1534ca9c7f723864bbec,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 19851bd66e633af418897f01468c6da7, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6e992ee3140a1534ca9c7f723864bbec, type: 3}
