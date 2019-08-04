@@ -17,8 +17,6 @@ namespace Player
         public static PlayerController Instance { get; private set; }
         public static Rewired.Player Input { get; private set; }
 
-        public Transform test;
-
         public Transform cameraAxis;
 
         public float adsMovementSpeed = 3F;
@@ -27,6 +25,7 @@ namespace Player
         public float pickupRadius = 4F;
 
         public float maxHealth = 100F;
+        public float healthRecovery = 10F;
 
         [Header("Camera")]
         public float cameraSpeed = 25F;
@@ -117,7 +116,7 @@ namespace Player
 
         private float crosshairVelocity;
         private Vector2 crosshairZoomVelocity;
-
+        
         private void Awake()
         {
             Instance = this;
@@ -174,6 +173,9 @@ namespace Player
 
         private void Update()
         {
+            health += healthRecovery * Time.deltaTime / maxHealth;
+            health = Mathf.Clamp01(health);
+            
             Vector3 movement = Input.GetAxis2D(MOVE_HORIZONTAL, MOVE_VERTICAL).RemapXZ();
             movement = transform.rotation * movement;
 
@@ -293,7 +295,7 @@ namespace Player
         {
             if (damageSource)
             {
-                float a = -Vector3.SignedAngle(test.transform.position - transform.position, transform.forward, Vector3.up);
+                float a = -Vector3.SignedAngle(damageSource.position - transform.position, transform.forward, Vector3.up);
                 float[] differences = uiHitmarksAngles.Select(x => Mathf.Abs(x - a)).ToArray();
                 CompassDirection direction = (CompassDirection) Array.IndexOf(differences, differences.Min());
                 if (direction == CompassDirection.South2)
@@ -312,9 +314,6 @@ namespace Player
 
         private void LateUpdate()
         {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Z))
-                Damage(10F, test);
-
             Vector2 camera = Input.GetAxis2D(LOOK_VERTICAL, LOOK_HORIZONTAL);
 
             bool isGamepad = Input.controllers.GetLastActiveController()?.type == ControllerType.Joystick;
