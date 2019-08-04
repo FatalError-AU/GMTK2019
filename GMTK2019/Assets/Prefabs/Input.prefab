@@ -321,7 +321,7 @@ MonoBehaviour:
     inputBehaviors:
     - _id: 0
       _name: Default
-      _joystickAxisSensitivity: 100
+      _joystickAxisSensitivity: 1
       _digitalAxisSimulation: 1
       _digitalAxisSnap: 1
       _digitalAxisInstantReverse: 0

@@ -5,6 +5,8 @@ using UnityEngine.Experimental.Rendering.HDPipeline;
 
 public class LanternIntensityTweaker : MonoBehaviour
 {
+    public static LanternIntensityTweaker Light;
+    
     public float minDistance = 10F;
     public float maxDistance = 30F;
     public float minLumen = 300F;
@@ -18,10 +20,14 @@ public class LanternIntensityTweaker : MonoBehaviour
     private float angle;
 
     private new HDAdditionalLightData light;
+    private Light lightBasic;
     
     private void Awake()
     {
+        Light = this;
+        
         light = GetComponent<HDAdditionalLightData>();
+        lightBasic = GetComponent<Light>();
     }
 
     private void Update()
@@ -41,4 +47,10 @@ public class LanternIntensityTweaker : MonoBehaviour
                 angle -= 2f * Mathf.PI;
         }
     }
+
+    public float GetLightLevel()
+        => LightUtils.ConvertPointLightLumenToCandela(light.intensity);
+
+    public float GetLightRadius()
+        => lightBasic.range;
 }
