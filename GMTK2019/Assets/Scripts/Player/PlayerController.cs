@@ -21,14 +21,16 @@ namespace Player
 
         public Transform cameraAxis;
 
-        public float playerSpeed = 25F;
-        public float sprintSpeed = 45F;
+        public float adsMovementSpeed = 3F;
+        public float playerSpeed = 5F;
+        public float sprintSpeed = 10F;
         public float pickupRadius = 4F;
 
         public float maxHealth = 100F;
 
         [Header("Camera")]
         public float cameraSpeed = 25F;
+        public float gamepadCameraSpeed = 120F;
         public float cameraPitchBoundHigh;
         public float cameraPitchBoundLow;
 
@@ -40,6 +42,7 @@ namespace Player
         public float recoilWithLantern = 2F;
         public float recoilFalloff = .25F;
         public float maxRecoil = 15F;
+        public float adsSpeed = .05F;
 
         [Header("Anchors")]
         public Transform lanternAnchor;
@@ -55,6 +58,12 @@ namespace Player
         [LabelledCollection(typeof(CompassDirection))]
         public float[] uiHitmarksAngles;
         public float uiHitmarkFalloff = .4F;
+        
+        [Header("Crosshair")]
+        public CanvasGroup uiCrosshair;
+        public float crosshairAodSize = 64F;
+        public float crosshairNeutralSize = 120F;
+        public float crosshairMovingSize = 170F;
 
         [Header("Animation")]
         [AnimationCollection.Validate(typeof(ArmsAnimation))]
@@ -105,6 +114,9 @@ namespace Player
         private float mixerVelocity;
 
         private bool lanternLock;
+
+        private float crosshairVelocity;
+        private Vector2 crosshairZoomVelocity;
 
         private void Awake()
         {
@@ -168,6 +180,9 @@ namespace Player
             if (movement.magnitude > 1F)
                 movement.Normalize();
 
+            if (movement.z <= Mathf.Epsilon)
+                sprinting = false;
+
             bool isAiming = Input.GetButton(AIM) && !LanternHeld;
 
             yVelocity -= Utility.GRAVITY * Time.deltaTime;
@@ -180,10 +195,17 @@ namespace Player
             else
                 sprinting = false;
 
-            controller.Move(((sprinting ? sprintSpeed : playerSpeed) * movement + yVelocity * Vector3.up) * Time.deltaTime);
-            movementMixer.Parameter = Mathf.SmoothDamp(movementMixer.Parameter, controller.velocity.Remove(Utility.Axis.Y).magnitude, ref mixerVelocity, .25F);
-            lanternMixer.Parameter = Mathf.SmoothDamp(lanternMixer.Parameter, controller.velocity.Remove(Utility.Axis.Y).magnitude, ref mixerVelocity, .25F);
+            controller.Move(((isAiming ? adsMovementSpeed : sprinting ? sprintSpeed : playerSpeed) * movement + yVelocity * Vector3.up) * Time.deltaTime);
+            movementMixer.Parameter = Mathf.SmoothDamp(movementMixer.Parameter, controller.velocity.Remove(Utility.Axis.Y).magnitude, ref mixerVelocity, .1F);
+            lanternMixer.Parameter = Mathf.SmoothDamp(lanternMixer.Parameter, controller.velocity.Remove(Utility.Axis.Y).magnitude, ref mixerVelocity, .1F);
 
+            uiCrosshair.alpha = Mathf.SmoothDamp(uiCrosshair.alpha, isAiming || LanternHeld ? 0F : 1F, ref crosshairVelocity, adsSpeed);
+            float crosshairZoom = isAiming ? crosshairAodSize : controller.velocity.magnitude > playerSpeed / 10F ? crosshairMovingSize : crosshairNeutralSize;
+            RectTransform crosshairTransform = uiCrosshair.transform as RectTransform;
+            
+            if(crosshairTransform != null)
+                crosshairTransform.sizeDelta = Vector2.SmoothDamp(crosshairTransform.sizeDelta, Vector2.one * crosshairZoom, ref crosshairZoomVelocity, adsSpeed);
+            
             if (controller.isGrounded)
                 yVelocity = 0F;
 
@@ -217,15 +239,13 @@ namespace Player
                 lantern.localPosition = Vector3.zero;
                 lantern.localRotation = Quaternion.identity;
                 lantern.localScale = Vector3.one;
-//                lanternJoint.anchor
 
                 lanternRb.isKinematic = true;
                 animancer.CrossFade(lanternMixer, .25F);
             }
 
-            cameraPosition.position = Vector3.SmoothDamp(cameraPosition.position, isAiming ? sightsAnchor.position : cameraPosition.parent.position, ref cameraVelocity, .25F);
-
-            cameraPosition.localEulerAngles = new Vector3(cameraPosition.localEulerAngles.x, Mathf.SmoothDampAngle(cameraPosition.localEulerAngles.y, isAiming ? sightsAnchor.parent.localEulerAngles.y + sightsAnchor.localEulerAngles.y : cameraPosition.parent.localEulerAngles.y, ref cameraAngularVelocity, .25F), 0F);
+            cameraPosition.position = Vector3.SmoothDamp(cameraPosition.position, isAiming ? sightsAnchor.position : cameraPosition.parent.position, ref cameraVelocity, adsSpeed);
+            cameraPosition.localEulerAngles = new Vector3(cameraPosition.localEulerAngles.x, Mathf.SmoothDampAngle(cameraPosition.localEulerAngles.y, isAiming ? sightsAnchor.parent.localEulerAngles.y + sightsAnchor.localEulerAngles.y : cameraPosition.parent.localEulerAngles.y, ref cameraAngularVelocity, adsSpeed), 0F);
 
             if (reloading)
                 return;
@@ -297,8 +317,10 @@ namespace Player
 
             Vector2 camera = Input.GetAxis2D(LOOK_VERTICAL, LOOK_HORIZONTAL);
 
-            yaw += camera.y * cameraSpeed * Time.deltaTime;
-            pitch -= camera.x * cameraSpeed * Time.deltaTime;
+            bool isGamepad = Input.controllers.GetLastActiveController()?.type == ControllerType.Joystick;
+
+            yaw += camera.y * (isGamepad ? gamepadCameraSpeed : cameraSpeed) * Time.deltaTime;
+            pitch -= camera.x * (isGamepad ? gamepadCameraSpeed : cameraSpeed) * Time.deltaTime;
 
             if (pitch > cameraPitchBoundHigh)
                 pitch = cameraPitchBoundHigh;
