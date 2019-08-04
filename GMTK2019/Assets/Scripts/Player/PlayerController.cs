@@ -14,10 +14,11 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
+        public static PlayerController Instance { get; private set; }
         public static Rewired.Player Input { get; private set; }
 
         public Transform test;
-        
+
         public Transform cameraAxis;
 
         public float playerSpeed = 25F;
@@ -25,7 +26,7 @@ namespace Player
         public float pickupRadius = 4F;
 
         public float maxHealth = 100F;
-        
+
         [Header("Camera")]
         public float cameraSpeed = 25F;
         public float cameraPitchBoundHigh;
@@ -35,7 +36,6 @@ namespace Player
         public int magazineSize = 10;
         public float cooldown = .25F;
         public float gunDamage;
-        public float reloadLength = 1F;
         public float recoil = 1F;
         public float recoilWithLantern = 2F;
         public float recoilFalloff = .25F;
@@ -59,15 +59,19 @@ namespace Player
         [Header("Animation")]
         [AnimationCollection.Validate(typeof(ArmsAnimation))]
         public AnimationCollection armsAnimations;
-        
+        public AvatarMask lanternMask;
+        public AvatarMask gunSliderMask;
+
         private EventfulAnimancerComponent animancer;
         private LinearMixerState movementMixer;
-        private AnimancerState idle;
-        private AnimancerState walk;
-        private AnimancerState sprint;
         private AnimancerState fire;
         private AnimancerState reload;
-        
+        private AnimancerState reloadEmpty;
+        private AnimancerState gunSliderBack;
+
+        private LinearMixerState lanternMixer;
+        private AnimancerState lanternThrow;
+
         private float pitch;
         private float yaw;
 
@@ -80,7 +84,8 @@ namespace Player
 
         private Transform lantern;
         private Rigidbody lanternRb;
-        private bool lanternHeld;
+        private ConfigurableJoint lanternJoint;
+        public bool LanternHeld { get; private set; }
 
         private bool reloading;
 
@@ -98,30 +103,52 @@ namespace Player
 
         private float[] hitmarkOpacity;
         private float mixerVelocity;
-        
+
+        private bool lanternLock;
+
         private void Awake()
         {
+            Instance = this;
+            AnimancerPlayable.maxLayerCount = 5;
+
             Input = ReInput.players.GetPlayer(Controls.Player.MAIN_PLAYER);
 
             controller = GetComponent<CharacterController>();
 
             lantern = GameObject.FindWithTag("Lantern").transform;
-            lanternRb = lantern.GetComponent<Rigidbody>();
+            lanternRb = lantern.GetComponentInChildren<Rigidbody>();
 
             animancer = GetComponentInChildren<EventfulAnimancerComponent>();
-            
+            animancer.onEvent = new AnimationEventReceiver(null, OnEvent);
+
             movementMixer = new LinearMixerState(animancer);
             movementMixer.Initialise(
-                            armsAnimations.GetClip(ArmsAnimation.Idle),
-                            armsAnimations.GetClip(ArmsAnimation.Walk),
-                            armsAnimations.GetClip(ArmsAnimation.Sprint),
-                            0F, playerSpeed, sprintSpeed
-                    );
+                    armsAnimations.GetClip(ArmsAnimation.Idle),
+                    armsAnimations.GetClip(ArmsAnimation.Walk),
+                    armsAnimations.GetClip(ArmsAnimation.Sprint),
+                    0F, playerSpeed, sprintSpeed
+            );
             movementMixer.Play();
-            animancer.GetLayer(0).SetWeight(1F);
-            
+            movementMixer.Layer.SetWeight(1F);
+
+            lanternMixer = new LinearMixerState(animancer.GetLayer(2));
+            lanternMixer.Initialise(armsAnimations.GetClip(ArmsAnimation.LanternIdle),
+                    armsAnimations.GetClip(ArmsAnimation.LanternWalk),
+                    0F, playerSpeed
+            );
+            lanternMixer.Layer.SetMask(lanternMask);
+            lanternMixer.Play();
+            animancer.GetLayer(2).SetWeight(0F);
+
             fire = animancer.CreateState(armsAnimations.GetClip(ArmsAnimation.Fire), 1);
-            reload = animancer.CreateState(armsAnimations.GetClip(ArmsAnimation.Reload), 1);
+            reload = animancer.CreateState(armsAnimations.GetClip(ArmsAnimation.Reload), 4);
+            reloadEmpty = animancer.CreateState(armsAnimations.GetClip(ArmsAnimation.ReloadEmpty), 4);
+            gunSliderBack = animancer.CreateState(armsAnimations.GetClip(ArmsAnimation.SliderBack), 3);
+            gunSliderBack.Play();
+            gunSliderBack.Layer.SetMask(gunSliderMask);
+            gunSliderBack.Layer.SetWeight(0F);
+
+            lanternThrow = animancer.CreateState(armsAnimations.GetClip(ArmsAnimation.LanternThrow), 2);
         }
 
         private void Start()
@@ -129,7 +156,7 @@ namespace Player
             pitch = cameraAxis.transform.localEulerAngles.x;
             yaw = transform.localEulerAngles.y;
             bullets = magazineSize;
-            
+
             hitmarkOpacity = new float[uiHitmarksAngles.Length];
         }
 
@@ -141,7 +168,7 @@ namespace Player
             if (movement.magnitude > 1F)
                 movement.Normalize();
 
-            bool isAiming = Input.GetButton(AIM) && !lanternHeld;            
+            bool isAiming = Input.GetButton(AIM) && !LanternHeld;
 
             yVelocity -= Utility.GRAVITY * Time.deltaTime;
 
@@ -152,45 +179,54 @@ namespace Player
             }
             else
                 sprinting = false;
-            
+
             controller.Move(((sprinting ? sprintSpeed : playerSpeed) * movement + yVelocity * Vector3.up) * Time.deltaTime);
             movementMixer.Parameter = Mathf.SmoothDamp(movementMixer.Parameter, controller.velocity.Remove(Utility.Axis.Y).magnitude, ref mixerVelocity, .25F);
+            lanternMixer.Parameter = Mathf.SmoothDamp(lanternMixer.Parameter, controller.velocity.Remove(Utility.Axis.Y).magnitude, ref mixerVelocity, .25F);
 
             if (controller.isGrounded)
                 yVelocity = 0F;
 
-            if (lanternHeld)
-            {
-                if (Input.GetButtonDown(DROP))
-                {
-                    lanternHeld = false;
-                    lantern.SetParent(null);
-                    lanternRb.isKinematic = false;
-                }
-                else if (Input.GetButtonDown(INTERACT))
-                {
-                    lanternHeld = false;
-                    lantern.SetParent(null);
-                    lanternRb.isKinematic = false;
-                    lantern.localRotation = Quaternion.identity;
+            if (lanternLock)
+                return;
 
-                    lanternRb.velocity = cameraAxis.forward * 25F;
+            if (LanternHeld)
+            {
+                bool drop = Input.GetButtonDown(DROP);
+                bool yeet = Input.GetButtonDown(INTERACT);
+
+                if (drop || yeet)
+                {
+                    lanternLock = true;
+
+                    if (yeet)
+                        animancer.CrossFadeFromStart(lanternThrow, .05F).OnEnd = () =>
+                        {
+                            lanternThrow.OnEnd = null;
+                            lanternMixer.Play();
+                            lanternThrow.Layer.StartFade(0F, .25F);
+                        };
+                    else
+                        Drop(false);
                 }
             }
             else if (!isAiming && Vector3.Distance(transform.position, lantern.transform.position) < pickupRadius && (Input.GetButtonDown(INTERACT) || Input.GetButtonDown(DROP)))
             {
-                lanternHeld = true;
+                LanternHeld = true;
                 lantern.SetParent(lanternAnchor);
                 lantern.localPosition = Vector3.zero;
                 lantern.localRotation = Quaternion.identity;
+                lantern.localScale = Vector3.one;
+//                lanternJoint.anchor
 
                 lanternRb.isKinematic = true;
+                animancer.CrossFade(lanternMixer, .25F);
             }
 
             cameraPosition.position = Vector3.SmoothDamp(cameraPosition.position, isAiming ? sightsAnchor.position : cameraPosition.parent.position, ref cameraVelocity, .25F);
 
             cameraPosition.localEulerAngles = new Vector3(cameraPosition.localEulerAngles.x, Mathf.SmoothDampAngle(cameraPosition.localEulerAngles.y, isAiming ? sightsAnchor.parent.localEulerAngles.y + sightsAnchor.localEulerAngles.y : cameraPosition.parent.localEulerAngles.y, ref cameraAngularVelocity, .25F), 0F);
-            
+
             if (reloading)
                 return;
 
@@ -199,12 +235,15 @@ namespace Player
             else if (bullets > 0 && Input.GetButtonDown(SHOOT))
             {
                 sprinting = false;
-                
+
                 bullets--;
                 gunCooldown = cooldown;
-                targetRecoil += lanternHeld ? recoilWithLantern : recoil;
+                targetRecoil += LanternHeld ? recoilWithLantern : recoil;
 
-                animancer.CrossFadeFromStart(fire, .03F);
+                if (bullets <= 0)
+                    gunSliderBack.Layer.StartFade(1F, .1F);
+
+                animancer.CrossFadeFromStart(fire, .03F).OnEnd = () => { fire.Stop(); };
 
                 if (Physics.Raycast(gunAnchor.position, gunAnchor.forward, out RaycastHit hit, 100F))
                 {
@@ -212,14 +251,19 @@ namespace Player
                     if (health)
                         health.Damage(gunDamage);
                 }
-            } else if (!lanternHeld && (Input.GetButtonDown(RELOAD) && bullets < magazineSize || bullets <= 0))
+            }
+            else if (!LanternHeld && (Input.GetButtonDown(RELOAD) && bullets < magazineSize || bullets <= 0))
             {
-                animancer.CrossFadeFromStart(reload, .05F).OnEnd = () =>
+                animancer.CrossFadeFromStart(bullets <= 0 ? reloadEmpty : reload, .05F).OnEnd = () =>
                 {
                     reload.OnEnd = null;
+                    reloadEmpty.OnEnd = null;
+
                     reloading = false;
                     bullets = magazineSize;
-                    animancer.GetLayer(1).StartFade(.05F);
+                    reload.Layer.StartFade(0F, .05F);
+
+                    gunSliderBack.Layer.SetWeight(0F);
                 };
                 reloading = true;
             }
@@ -235,9 +279,9 @@ namespace Player
                 if (direction == CompassDirection.South2)
                     direction = CompassDirection.South;
 
-                hitmarkOpacity[(int)direction] = 1F;
+                hitmarkOpacity[(int) direction] = 1F;
             }
-            
+
             health -= damage / maxHealth;
 
             if (health <= 0F)
@@ -245,12 +289,12 @@ namespace Player
                 //Dead
             }
         }
-        
+
         private void LateUpdate()
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Z))
                 Damage(10F, test);
-            
+
             Vector2 camera = Input.GetAxis2D(LOOK_VERTICAL, LOOK_HORIZONTAL);
 
             yaw += camera.y * cameraSpeed * Time.deltaTime;
@@ -264,7 +308,7 @@ namespace Player
             targetRecoil -= recoilFalloff * Time.deltaTime;
             targetRecoil = Mathf.Clamp(targetRecoil, 0F, maxRecoil);
             recoilValue = Mathf.SmoothDampAngle(recoilValue, targetRecoil, ref recoilVelocity, .1F);
-            
+
             transform.localEulerAngles = transform.localEulerAngles.Set(yaw, Utility.Axis.Y);
             cameraAxis.transform.localEulerAngles = cameraAxis.transform.localEulerAngles.Set(pitch - recoilValue, Utility.Axis.X);
 
@@ -288,6 +332,33 @@ namespace Player
             }
         }
 
+        private void OnEvent(AnimationEvent e)
+        {
+            if ("LanternThrow".Equals(e.stringParameter))
+            {
+                Drop(true);
+            }
+        }
+
+        private void Drop(bool yeet)
+        {
+            sprinting = false;
+            
+            lanternLock = false;
+            LanternHeld = false;
+            lantern.SetParent(null);
+            lantern.localScale = Vector3.one;
+            
+            lanternRb.isKinematic = false;
+            
+            if(yeet)
+                lanternRb.velocity = cameraAxis.forward * 25F;
+            else
+            {
+                lanternThrow.Layer.StartFade(0F, .25F);
+            }
+        }
+
         private enum CompassDirection
         {
             North,
@@ -308,7 +379,14 @@ namespace Player
             Walk,
             Sprint,
             Fire,
-            Reload
+            Reload,
+            ReloadEmpty,
+            SliderBack,
+
+            [Header("Lantern")]
+            LanternIdle,
+            LanternWalk,
+            LanternThrow
         }
     }
 }
