@@ -1,0 +1,428 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Slider
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Arms
+    m_Weight: 0
+  - m_Path: Arms/GEO_GRP
+    m_Weight: 0
+  - m_Path: Arms/GEO_GRP/Forearms_GEO
+    m_Weight: 0
+  - m_Path: Arms/World
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/hips_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/hips_GRP/hips_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/L_clavicle_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/L_clavicle_GRP/L_clavicle_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/L_clavicle_GRP/L_clavicle_CTRL/L_shoulder_FK_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/L_clavicle_GRP/L_clavicle_CTRL/L_shoulder_FK_GRP/L_shoulder_FK_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/L_clavicle_GRP/L_clavicle_CTRL/L_shoulder_FK_GRP/L_shoulder_FK_CTRL/L_elbow_FK_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/L_clavicle_GRP/L_clavicle_CTRL/L_shoulder_FK_GRP/L_shoulder_FK_CTRL/L_elbow_FK_GRP/L_elbow_FK_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/L_clavicle_GRP/L_clavicle_CTRL/L_shoulder_FK_GRP/L_shoulder_FK_CTRL/L_elbow_FK_GRP/L_elbow_FK_CTRL/L_wrist_FK_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/L_clavicle_GRP/L_clavicle_CTRL/L_shoulder_FK_GRP/L_shoulder_FK_CTRL/L_elbow_FK_GRP/L_elbow_FK_CTRL/L_wrist_FK_GRP/L_wrist_FK_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/neck_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/R_arm_offset
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/R_arm_offset/R_clavical_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/R_arm_offset/R_clavical_GRP/R_clavical_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/R_arm_offset/R_clavical_GRP/R_clavical_CTRL/R_shoulder_FK_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/R_arm_offset/R_clavical_GRP/R_clavical_CTRL/R_shoulder_FK_GRP/R_shoulder_FK_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/R_arm_offset/R_clavical_GRP/R_clavical_CTRL/R_shoulder_FK_GRP/R_shoulder_FK_CTRL/R_elbow_FK_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/R_arm_offset/R_clavical_GRP/R_clavical_CTRL/R_shoulder_FK_GRP/R_shoulder_FK_CTRL/R_elbow_FK_GRP/R_elbow_FK_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/R_arm_offset/R_clavical_GRP/R_clavical_CTRL/R_shoulder_FK_GRP/R_shoulder_FK_CTRL/R_elbow_FK_GRP/R_elbow_FK_CTRL/R_wrist_FK_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/Cog_GRP/COG_CTRL/spineA_GRP/spineA_CTRL/spineB_GRP/spineB_CTRL/chest_GRP/chest_CTRL/R_arm_offset/R_clavical_GRP/R_clavical_CTRL/R_shoulder_FK_GRP/R_shoulder_FK_CTRL/R_elbow_FK_GRP/R_elbow_FK_CTRL/R_wrist_FK_GRP/R_wrist_FK_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_IKFK_switch
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_indexBase_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_indexBase_GRP/L_indexBase_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_indexBase_GRP/L_indexBase_CTRL/L_indexA_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_indexBase_GRP/L_indexBase_CTRL/L_indexA_GRP/L_indexA_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_indexBase_GRP/L_indexBase_CTRL/L_indexA_GRP/L_indexA_CTRL/L_indexB_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_indexBase_GRP/L_indexBase_CTRL/L_indexA_GRP/L_indexA_CTRL/L_indexB_GRP/L_indexB_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_midBase_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_midBase_GRP/L_midBase_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_midBase_GRP/L_midBase_CTRL/L_midA_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_midBase_GRP/L_midBase_CTRL/L_midA_GRP/L_midA_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_midBase_GRP/L_midBase_CTRL/L_midA_GRP/L_midA_CTRL/L_midB_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_midBase_GRP/L_midBase_CTRL/L_midA_GRP/L_midA_CTRL/L_midB_GRP/L_midB_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_pinkieBase_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_pinkieBase_GRP/L_pinkieBase_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_pinkieBase_GRP/L_pinkieBase_CTRL/L_pinkieA_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_pinkieBase_GRP/L_pinkieBase_CTRL/L_pinkieA_GRP/L_pinkieA_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_pinkieBase_GRP/L_pinkieBase_CTRL/L_pinkieA_GRP/L_pinkieA_CTRL/L_pinkieB_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_pinkieBase_GRP/L_pinkieBase_CTRL/L_pinkieA_GRP/L_pinkieA_CTRL/L_pinkieB_GRP/L_pinkieB_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_ringBase_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_ringBase_GRP/L_ringBase_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_ringBase_GRP/L_ringBase_CTRL/L_ringA_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_ringBase_GRP/L_ringBase_CTRL/L_ringA_GRP/L_ringA_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_ringBase_GRP/L_ringBase_CTRL/L_ringA_GRP/L_ringA_CTRL/L_ringB_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/L_ringBase_GRP/L_ringBase_CTRL/L_ringA_GRP/L_ringA_CTRL/L_ringB_GRP/L_ringB_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/thumbBase_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/thumbBase_GRP/thumbBase_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/thumbBase_GRP/thumbBase_CTRL/thumbA_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/thumbBase_GRP/thumbBase_CTRL/thumbA_GRP/thumbA_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/thumbBase_GRP/thumbBase_CTRL/thumbA_GRP/thumbA_CTRL/thumbB_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_hand_GRP/thumbBase_GRP/thumbBase_CTRL/thumbA_GRP/thumbA_CTRL/thumbB_GRP/thumbB_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_IK_elbow_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_IK_elbow_GRP/L_elbowIK_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_IK_elbow_GRP/L_elbowIK_CTRL/L_elbow_IK_PV
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_IK_wrist_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_IK_wrist_GRP/L_IK_SS_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_IK_wrist_GRP/L_IK_SS_GRP/L_wristIK_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/L_IK_wrist_GRP/L_IK_SS_GRP/L_wristIK_CTRL/L_IKArm
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_IKFK_switch
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_indexBase_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_indexBase_GRP/R_indexBase_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_indexBase_GRP/R_indexBase_CTRL/R_indexA_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_indexBase_GRP/R_indexBase_CTRL/R_indexA_GRP/R_indexA_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_indexBase_GRP/R_indexBase_CTRL/R_indexA_GRP/R_indexA_CTRL/R_indexB_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_indexBase_GRP/R_indexBase_CTRL/R_indexA_GRP/R_indexA_CTRL/R_indexB_GRP/R_indexB_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_midBase_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_midBase_GRP/R_midBase_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_midBase_GRP/R_midBase_CTRL/R_midA_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_midBase_GRP/R_midBase_CTRL/R_midA_GRP/R_midA_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_midBase_GRP/R_midBase_CTRL/R_midA_GRP/R_midA_CTRL/R_midB_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_midBase_GRP/R_midBase_CTRL/R_midA_GRP/R_midA_CTRL/R_midB_GRP/R_midB_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_pinkieBase_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_pinkieBase_GRP/R_pinkieBase_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_pinkieBase_GRP/R_pinkieBase_CTRL/R_pinkieA_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_pinkieBase_GRP/R_pinkieBase_CTRL/R_pinkieA_GRP/R_pinkieA_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_pinkieBase_GRP/R_pinkieBase_CTRL/R_pinkieA_GRP/R_pinkieA_CTRL/R_pinkieB_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_pinkieBase_GRP/R_pinkieBase_CTRL/R_pinkieA_GRP/R_pinkieA_CTRL/R_pinkieB_GRP/R_pinkieB_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_ringBase_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_ringBase_GRP/R_ringBase_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_ringBase_GRP/R_ringBase_CTRL/R_ringA_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_ringBase_GRP/R_ringBase_CTRL/R_ringA_GRP/R_ringA_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_ringBase_GRP/R_ringBase_CTRL/R_ringA_GRP/R_ringA_CTRL/R_ringB_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/R_ringBase_GRP/R_ringBase_CTRL/R_ringA_GRP/R_ringA_CTRL/R_ringB_GRP/R_ringB_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/thumbBase_GRP 1
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/thumbBase_GRP 1/thumbBase_CTRL 1
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/thumbBase_GRP 1/thumbBase_CTRL 1/thumbA_GRP
+      1
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/thumbBase_GRP 1/thumbBase_CTRL 1/thumbA_GRP
+      1/thumbA_CTRL 1
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/thumbBase_GRP 1/thumbBase_CTRL 1/thumbA_GRP
+      1/thumbA_CTRL 1/thumbB_GRP 1
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_hand_GRP/thumbBase_GRP 1/thumbBase_CTRL 1/thumbA_GRP
+      1/thumbA_CTRL 1/thumbB_GRP 1/thumbB_CTRL 1
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_IK_elbow_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_IK_elbow_GRP/R_elbowIK_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_IK_elbow_GRP/R_elbowIK_CTRL/R_elbow_IK_PV
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_IK_wrist_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_IK_wrist_GRP/R_IK_SS_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_IK_wrist_GRP/R_IK_SS_GRP/R_wristIK_CTRL
+    m_Weight: 0
+  - m_Path: Arms/World/IKCon_GRP/R_IK_wrist_GRP/R_IK_SS_GRP/R_wristIK_CTRL/R_IKArm
+    m_Weight: 0
+  - m_Path: Arms/World/L_IK_Space_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/L_IK_Space_GRP/L_IK_Parent_hips
+    m_Weight: 0
+  - m_Path: Arms/World/L_IK_Space_GRP/L_IK_Parent_stomach
+    m_Weight: 0
+  - m_Path: Arms/World/L_IK_Space_GRP/L_IK_Parent_world
+    m_Weight: 0
+  - m_Path: Arms/World/R_IK_Space_GRP
+    m_Weight: 0
+  - m_Path: Arms/World/R_IK_Space_GRP/R_IK_Parent_hips
+    m_Weight: 0
+  - m_Path: Arms/World/R_IK_Space_GRP/R_IK_Parent_stomach
+    m_Weight: 0
+  - m_Path: Arms/World/R_IK_Space_GRP/R_IK_Parent_world
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_elbow_low_TWIST
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_elbow_low_TWIST/L_wrist_low_TWIST
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_indexBase
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_indexBase/L_indexA
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_indexBase/L_indexA/L_indexB
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_indexBase/L_indexA/L_indexB/L_indexEnd
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_midBase
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_midBase/L_midA
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_midBase/L_midA/L_midB
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_midBase/L_midA/L_midB/L_midEnd
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_pinkieBase
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_pinkieBase/L_pinkieA
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_pinkieBase/L_pinkieA/L_pinkieB
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_pinkieBase/L_pinkieA/L_pinkieB/L_pinkieEnd
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_ringBase
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_ringBase/L_ringA
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_ringBase/L_ringA/L_ringB
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_ringBase/L_ringA/L_ringB/L_ringEnd
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/L_wrist_twist_HDL
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/thumbBase
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/thumbBase/thumbA
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/thumbBase/thumbA/thumbB
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist/thumbBase/thumbA/thumbB/thumbEnd
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist_A_twist_JNT
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist_B_twist_JNT
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder/L_elbow/L_wrist_C_twist_JNT
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder_FK
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder_FK/L_elbow_FK
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder_FK/L_elbow_FK/L_wrist_FK
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder_IK
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder_IK/L_elbow_IK
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/L_clavical/L_shoulder_IK/L_elbow_IK/L_wrist_IK
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_elbow_low_TWIST
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_elbow_low_TWIST/R_wrist_low_TWIST
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_indexBase
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_indexBase/R_indexA
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_indexBase/R_indexA/R_indexB
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_indexBase/R_indexA/R_indexB/R_indexEnd
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_midBase
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_midBase/R_midA
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_midBase/R_midA/R_midB
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_midBase/R_midA/R_midB/R_midEnd
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_pinkieBase
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_pinkieBase/R_pinkieA
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_pinkieBase/R_pinkieA/R_pinkieB
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_pinkieBase/R_pinkieA/R_pinkieB/R_pinkieEnd
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_ringBase
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_ringBase/R_ringA
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_ringBase/R_ringA/R_ringB
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_ringBase/R_ringA/R_ringB/R_ringEnd
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/R_wrist_twist_HDL
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/thumbBase1
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/thumbBase1/thumbA
+      1
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/thumbBase1/thumbA
+      1/thumbB 1
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist/thumbBase1/thumbA
+      1/thumbB 1/thumbEnd 1
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist_A_twist_JNT
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist_B_twist_JNT
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder/R_elbow/R_wrist_C_twist_JNT
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder_FK
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder_FK/R_elbow_FK
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder_FK/R_elbow_FK/R_wrist_FK
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder_IK
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder_IK/R_elbow_IK
+    m_Weight: 0
+  - m_Path: Arms/World/ROOT/cog/spineBase/spineMid/spineEnd/chest/R_clavical/R_shoulder_IK/R_elbow_IK/R_wrist_IK
+    m_Weight: 0
+  - m_Path: Gun
+    m_Weight: 0
+  - m_Path: Gun/Glock_17
+    m_Weight: 0
+  - m_Path: Gun/Handle
+    m_Weight: 0
+  - m_Path: Gun/Handle/Slide
+    m_Weight: 1
+  - m_Path: Gun/Handle_CTRL
+    m_Weight: 0
+  - m_Path: Gun/Handle_CTRL/group1
+    m_Weight: 0
+  - m_Path: Gun/Handle_CTRL/group1/Slide 1
+    m_Weight: 0

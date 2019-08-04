@@ -106,6 +106,11 @@ namespace Enemy
             CurrentState?.OnEvent(id);
         }
 
+        public void OnEventCollide(Collision other)
+        {
+            CurrentState?.OnEventCollide(other);
+        }
+        
         public void RegisterState(State state, string name)
         {
             if (states.ContainsKey(name))
@@ -365,6 +370,11 @@ namespace Enemy
             public virtual void OnEvent(string id)
             {
                 backgroundState?.OnEvent(id);
+            }
+
+            public virtual void OnEventCollide(Collision other)
+            {
+                backgroundState?.OnEventCollide(other);
             }
         }
 
