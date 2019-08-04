@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 6599011761539872780}
   - component: {fileID: 7578846357314417998}
   - component: {fileID: 4310792661852742617}
+  - component: {fileID: 4087980011439465667}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -126,6 +127,19 @@ MonoBehaviour:
     chaseSpeed: 10
     retreatSpeed: 20
   animations: {fileID: 11400000, guid: 1bc5dd8f42e0065428a3a3cc5443244d, type: 2}
+--- !u!114 &4087980011439465667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565430913506037635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd34a2f7e604554a21fe32a9a13b35e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
 --- !u!1001 &3780629094978082129
 PrefabInstance:
   m_ObjectHideFlags: 0

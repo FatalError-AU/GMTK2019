@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Enemy
 {
-    public class EnemyAi : MonoBehaviour
+    public class EnemyAi : MonoBehaviour, EnemyHealth.IDeath
     {
         public AiStateMachine stateMachine;
         public EnemyProperties properties;
@@ -16,6 +16,8 @@ namespace Enemy
         public AnimationCollection animations;
 
         private NavMeshPath path;
+
+        private bool isDead;
         
         private void Start()
         {
@@ -30,7 +32,7 @@ namespace Enemy
             stateMachine = new AiStateMachine(transform)
             {
                     shared = shared,
-                    target = Player.PlayerController.Instance.transform
+                    target = PlayerController.Instance.transform
             };
             
             shared.animancer.onEvent = new AnimationEventReceiver(null, x => stateMachine.OnEvent(x.stringParameter));
@@ -366,7 +368,7 @@ namespace Enemy
         
         private void Update()
         {
-            if (stateMachine.DistanceToTarget > 150F)
+            if (isDead || stateMachine.DistanceToTarget > 150F)
                 return;
             
             stateMachine.Tick();
@@ -374,7 +376,7 @@ namespace Enemy
 
         private void LateUpdate()
         {
-            if (stateMachine.DistanceToTarget > 150F)
+            if (isDead || stateMachine.DistanceToTarget > 150F)
                 return;
             
             stateMachine.LateTick();
@@ -382,7 +384,8 @@ namespace Enemy
 
         private void OnCollisionEnter(Collision other)
         {
-            stateMachine.OnEventCollide(other);
+            if(!isDead)
+                stateMachine.OnEventCollide(other);
         }
 
         private bool CanSeeLight()
@@ -443,6 +446,20 @@ namespace Enemy
             LeapMidair,
             LeapLand
             
+        }
+
+        public void OnDying(ref bool cancel)
+        {
+            stateMachine.Exit();
+            isDead = true;
+
+            cancel = true;
+            Destroy(this);
+            Destroy(GetComponent<NavMeshAgent>());
+            Destroy(gameObject, 4F);
+
+            AnimancerComponent animancer = GetComponentInChildren<AnimancerComponent>();
+            animancer.Play(animations.GetClip(EnemyAnimation.Die));
         }
     }
 }

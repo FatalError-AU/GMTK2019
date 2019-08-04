@@ -3,10 +3,12 @@ using System.Linq;
 using Animancer;
 using Animation;
 using Enemy;
+using FX;
 using InspectorGadgets.Attributes;
 using Rewired;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static Controls.Action;
 
@@ -308,7 +310,7 @@ namespace Player
 
             if (health <= 0F)
             {
-                //Dead
+                SceneManager.LoadScene(0);
             }
         }
 
