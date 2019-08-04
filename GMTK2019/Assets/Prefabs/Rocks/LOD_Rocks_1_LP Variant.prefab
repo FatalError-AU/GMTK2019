@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6443604918264787513
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_Name
+      value: LOD_Rocks_1_LP
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 196.51993
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.4941225
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 31.32328
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4149159159354703689, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f61cd50fae15a944a274a0167f38014, type: 2}
+    - target: {fileID: -1149151526453693544, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f61cd50fae15a944a274a0167f38014, type: 2}
+    - target: {fileID: 4114092498574947496, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f61cd50fae15a944a274a0167f38014, type: 2}
+    - target: {fileID: 5551014577142218206, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.47655967
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.16868149
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.037072573
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_FadeMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 1ac5393e20f0d314392074fb45eb7732,
+        type: 3}
+      propertyPath: m_AnimateCrossFading
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ac5393e20f0d314392074fb45eb7732, type: 3}
